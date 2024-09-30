@@ -9,7 +9,7 @@ size = Vector2(128, 84)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kwc0"]
 size = Vector2(302.633, 248.932)
 
-[node name="Node2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.79525, 0.963699)
 collision_mask = 4
 script = ExtResource("1_bw7c5")
@@ -38,4 +38,5 @@ limit_bottom = 1000
 limit_smoothed = true
 drag_horizontal_enabled = true
 
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

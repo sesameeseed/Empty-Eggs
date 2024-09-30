@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhdbyh1v6x8yn"]
+[gd_scene load_steps=9 format=3 uid="uid://dhdbyh1v6x8yn"]
 
 [ext_resource type="Script" path="res://Level 1.gd" id="1_8f8ea"]
 [ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="1_d481v"]
 [ext_resource type="PackedScene" uid="uid://y204a0rkeyq4" path="res://placeholder_platform.tscn" id="2_1bjai"]
 [ext_resource type="PackedScene" uid="uid://dvvhmtmmeek63" path="res://moving_platform.tscn" id="3_ds8si"]
 [ext_resource type="PackedScene" uid="uid://dvi8ccya1xito" path="res://enemy.tscn" id="5_5we1h"]
+[ext_resource type="PackedScene" uid="uid://bjp1x3ii3mkgm" path="res://spikes.tscn" id="6_cprud"]
 
 [sub_resource type="Animation" id="Animation_46cpj"]
 resource_name = "move platforms"
@@ -44,7 +45,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 4, 8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(5515, 430), Vector2(5515, 30), Vector2(5515, 430)]
+"values": [Vector2(5511, 372), Vector2(5511, 30), Vector2(5511, 372)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -83,7 +84,7 @@ scale = Vector2(4.46821, 3.66719)
 position = Vector2(-25, 405)
 
 [node name="Node2D5" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(4828, 231)
+position = Vector2(4828, 234)
 scale = Vector2(3.55189, 1.70586)
 
 [node name="Node2D6" parent="." instance=ExtResource("2_1bjai")]
@@ -105,7 +106,7 @@ libraries = {
 autoplay = "move platforms"
 
 [node name="vertical platform2" parent="." instance=ExtResource("3_ds8si")]
-position = Vector2(5515, 430)
+position = Vector2(5511, 372)
 scale = Vector2(1, 0.119995)
 
 [node name="Node2D7" parent="." instance=ExtResource("2_1bjai")]
@@ -116,5 +117,21 @@ scale = Vector2(4.46821, 5.58719)
 position = Vector2(7820, 38)
 scale = Vector2(1.0199, 0.168928)
 
-[node name="Node2D8" parent="." instance=ExtResource("5_5we1h")]
-position = Vector2(5710, 409)
+[node name="enemy" parent="." instance=ExtResource("5_5we1h")]
+position = Vector2(5867, 412)
+
+[node name="stair 1" parent="." instance=ExtResource("2_1bjai")]
+position = Vector2(5592, 432)
+scale = Vector2(1.539, 0.12)
+
+[node name="sair 2" parent="." instance=ExtResource("2_1bjai")]
+position = Vector2(5550, 402)
+scale = Vector2(1.25896, 0.12)
+
+[node name="Node2D8" parent="." instance=ExtResource("2_1bjai")]
+position = Vector2(1812, 625)
+scale = Vector2(0.916219, 0.489191)
+
+[node name="spikes" parent="." instance=ExtResource("6_cprud")]
+position = Vector2(1811, 554)
+scale = Vector2(0.929403, 0.0800147)

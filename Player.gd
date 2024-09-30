@@ -1,17 +1,16 @@
 extends CharacterBody2D
 
-
 const SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 const MAX_HEALTH = 100
 const DAMAGE_INTERVAL = 2
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health
 var timer
 var can_take_damage = true
 var sprite
+
 
 func _ready():
 	health = MAX_HEALTH
@@ -40,10 +39,11 @@ func _physics_process(delta):
 	elif velocity.x > 0:
 		sprite.flip_h = false
 	
-	# Die if jumped off map
+	# End game if jumped off map
 	if position.y >= 1000:
 		queue_free()
 		
+# Take damage when passing through enemy
 func take_damage(damage_en):
 	if can_take_damage:
 		can_take_damage = false
@@ -51,7 +51,12 @@ func take_damage(damage_en):
 		health -= damage_en
 		if health <= 0:
 			queue_free()
-		print('Player lost' + str(damage_en) + 'health!')
+		print('Player lost ' + str(damage_en) + ' health')
 
 func _on_damage_timer_timeout():
 	can_take_damage = true
+
+# End game when player hits spikes
+func _on_hitbox_body_entered(body):
+	if body == $"../spikes":
+		queue_free()
