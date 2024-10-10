@@ -100,10 +100,10 @@ position = Vector2(4143, 430)
 scale = Vector2(1, 0.119995)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move platforms"
 libraries = {
 "": SubResource("AnimationLibrary_rvu1p")
 }
-autoplay = "move platforms"
 
 [node name="vertical platform2" parent="." instance=ExtResource("3_ds8si")]
 position = Vector2(5511, 372)
