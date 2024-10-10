@@ -36,8 +36,11 @@ func _physics_process(delta):
 	# Flip sprite
 	if velocity.x < 0:
 		sprite.flip_h = true
+		$Camera2D.drag_horizontal_offset = -1
+			
 	elif velocity.x > 0:
 		sprite.flip_h = false
+		$Camera2D.drag_horizontal_offset = 1
 	
 	# End game if jumped off map
 	if position.y >= 1000:
@@ -60,3 +63,5 @@ func _on_damage_timer_timeout():
 func _on_hitbox_body_entered(body):
 	if body == $"../spikes":
 		queue_free()
+	if body == $"../egg":
+		print("game done")
