@@ -19,6 +19,9 @@ func _physics_process(delta):
 	elif velocity.x > 0:
 		$Sprite2D.flip_h = false
 
-# deal damage to player
+# get attacked/deal damage to player
 func _on_area_2d_body_entered(body):
-	body.take_damage(DAMAGE)
+	if not body.can_dash:
+		queue_free()
+	else:
+		body.take_damage(DAMAGE)

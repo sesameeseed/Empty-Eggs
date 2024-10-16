@@ -43,5 +43,9 @@ drag_vertical_enabled = true
 drag_left_margin = 0.4
 drag_right_margin = 0.4
 
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
