@@ -1,142 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhdbyh1v6x8yn"]
+[gd_scene load_steps=4 format=3 uid="uid://dhdbyh1v6x8yn"]
 
 [ext_resource type="Script" path="res://Level 1.gd" id="1_8f8ea"]
-[ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="1_d481v"]
-[ext_resource type="PackedScene" uid="uid://y204a0rkeyq4" path="res://placeholder_platform.tscn" id="2_1bjai"]
-[ext_resource type="PackedScene" uid="uid://dvvhmtmmeek63" path="res://moving_platform.tscn" id="3_ds8si"]
-[ext_resource type="PackedScene" uid="uid://dvi8ccya1xito" path="res://enemy.tscn" id="5_5we1h"]
-[ext_resource type="PackedScene" uid="uid://bjp1x3ii3mkgm" path="res://spikes.tscn" id="6_cprud"]
-[ext_resource type="PackedScene" uid="uid://mqn08i8qapon" path="res://egg.tscn" id="7_hk6ws"]
-
-[sub_resource type="Animation" id="Animation_46cpj"]
-resource_name = "move platforms"
-length = 8.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("horizontal platform:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(5514, 38), Vector2(6514, 38), Vector2(5514, 38)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("vertical platform:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(4143, 430), Vector2(4156, 30), Vector2(4143, 430)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("vertical platform2:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(5511, 372), Vector2(5511, 30), Vector2(5511, 372)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("horizontal platform2:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 4, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(7820, 38), Vector2(6820, 38), Vector2(7820, 38)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvu1p"]
-_data = {
-"move platforms": SubResource("Animation_46cpj")
-}
+[ext_resource type="PackedScene" uid="uid://chb4ryr80l4lp" path="res://Lvl1Platform.tscn" id="3_fjcss"]
+[ext_resource type="Texture2D" uid="uid://btyflcoigvmbd" path="res://ForestBG.jpg" id="7_4vkni"]
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_8f8ea")
 
-[node name="Node2D2" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(-1215, 567)
-scale = Vector2(19.2741, 0.961882)
+[node name="ForestBg" type="Sprite2D" parent="."]
+position = Vector2(2220, 270)
+scale = Vector2(3.46269, 3.46269)
+texture = ExtResource("7_4vkni")
 
-[node name="Node2D4" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(5497, 567)
-scale = Vector2(23.66, 0.961882)
-
-[node name="Node2D3" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(-1847, -13)
-scale = Vector2(4.46821, 3.66719)
-
-[node name="Node2D" parent="." instance=ExtResource("1_d481v")]
-position = Vector2(0, 406)
-
-[node name="Node2D5" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(4828, 234)
-scale = Vector2(3.55189, 1.70586)
-
-[node name="Node2D6" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(8510, 231)
-scale = Vector2(3.55189, 1.70586)
-
-[node name="horizontal platform" parent="." instance=ExtResource("3_ds8si")]
-position = Vector2(5514, 38)
-scale = Vector2(1.0199, 0.168928)
-
-[node name="vertical platform" parent="." instance=ExtResource("3_ds8si")]
-position = Vector2(4143, 430)
-scale = Vector2(1, 0.119995)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_rvu1p")
-}
-autoplay = "move platforms"
-
-[node name="vertical platform2" parent="." instance=ExtResource("3_ds8si")]
-position = Vector2(5511, 372)
-scale = Vector2(1, 0.119995)
-
-[node name="Node2D7" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(9712, -13)
-scale = Vector2(4.46821, 5.58719)
-
-[node name="horizontal platform2" parent="." instance=ExtResource("3_ds8si")]
-position = Vector2(7820, 38)
-scale = Vector2(1.0199, 0.168928)
-
-[node name="enemy" parent="." instance=ExtResource("5_5we1h")]
-position = Vector2(5867, 412)
-
-[node name="stair 1" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(5592, 432)
-scale = Vector2(1.539, 0.12)
-
-[node name="sair 2" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(5550, 402)
-scale = Vector2(1.25896, 0.12)
-
-[node name="Node2D8" parent="." instance=ExtResource("2_1bjai")]
-position = Vector2(1812, 625)
-scale = Vector2(0.916219, 0.489191)
-
-[node name="spikes" parent="." instance=ExtResource("6_cprud")]
-position = Vector2(1811, 554)
-scale = Vector2(0.929403, 0.0800147)
-
-[node name="egg" parent="." instance=ExtResource("7_hk6ws")]
-position = Vector2(8694, -7)
-scale = Vector2(0.140244, 0.193874)
+[node name="Lvl1Platform" parent="." instance=ExtResource("3_fjcss")]
+position = Vector2(-73, -1502)
+scale = Vector2(4.01788, 4.01788)
