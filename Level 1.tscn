@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Level 1.gd" id="1_8f8ea"]
 [ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="1_d481v"]
 [ext_resource type="PackedScene" uid="uid://chb4ryr80l4lp" path="res://Lvl1Platform.tscn" id="3_fjcss"]
+[ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="4_3k7cq"]
 [ext_resource type="Texture2D" uid="uid://btyflcoigvmbd" path="res://ForestBG.jpg" id="7_4vkni"]
 
 [node name="Level 1" type="Node2D"]
@@ -17,5 +18,5 @@ texture = ExtResource("7_4vkni")
 position = Vector2(-73, -1502)
 scale = Vector2(4.01788, 4.01788)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_d481v")]
-position = Vector2(188, 673)
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_3k7cq")]
+position = Vector2(174, 702)
