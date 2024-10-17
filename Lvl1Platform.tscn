@@ -336,7 +336,8 @@ sources/0 = SubResource("TileSetAtlasSource_12cep")
 size = Vector2(48, 5.5)
 
 [sub_resource type="Animation" id="Animation_dhvpt"]
-length = 0.001
+length = 4.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -344,10 +345,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(352, 0)]
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(352, 0), Vector2(2.08165e-12, 2.08165e-12)]
 }
 
 [sub_resource type="Animation" id="Animation_0c6mm"]
@@ -389,7 +390,7 @@ position = Vector2(1037, 479)
 texture = ExtResource("3_6dg5i")
 
 [node name="MovingPlatform" type="AnimatableBody2D" parent="."]
-position = Vector2(352, 0)
+position = Vector2(147.432, 1.20977e-12)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
