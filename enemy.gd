@@ -7,7 +7,7 @@ var direction = 1
 
 
 func _physics_process(delta):
-	# move around 
+	# move around
 	velocity.x = direction * SPEED
 	var collision = move_and_collide(velocity * delta)
 	if collision:

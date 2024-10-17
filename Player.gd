@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 400.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 const MAX_HEALTH = 100
 const DAMAGE_INTERVAL = 2
 
@@ -12,9 +12,6 @@ var can_take_damage = true
 var sprite
 var egg_count = 2
 var can_dash = true
-var can_move = true
-var gravity_multiplier = 1
-var up_count = 0
 
 
 func _ready():
@@ -25,28 +22,22 @@ func _ready():
 
 func _physics_process(delta):
 	# Add gravity
-	velocity.y += gravity * delta * gravity_multiplier
+	velocity.y += gravity * delta
 
 	# dash attack
-	if Input.is_action_just_pressed("dash_attack"):
-		if egg_count > 0:
-			can_move = false
-			dash_attack()
+	if Input.is_action_just_pressed("dash_attack") and egg_count > 0:
+		dash_attack()
 			
 	# Handle movement
-	if Input.is_action_just_released("ui_up"):
-		up_count += 1
 	if is_on_floor():
-		up_count = 0
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = JUMP_VELOCITY
-	elif up_count > 0 and egg_count > 1:
+	elif egg_count > 1:
 		if Input.is_action_just_pressed("ui_up"):
-			up_count += 1
 			velocity.y  = 0
-			gravity *= 0.2
-		elif up_count > 1 and Input.is_action_just_released("ui_up"):
-			gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+			gravity *= 0.1
+	if Input.is_action_just_released("ui_up"):
+		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 			
 	if can_dash:
 		if Input.is_action_pressed("ui_left"):
@@ -85,7 +76,6 @@ func dash_attack():
 		can_dash = false
 		$DashTimer.start()
 		velocity.x = 12 * SPEED * (0.5 - int(sprite.flip_h))
-		print(velocity.x)
 
 func _on_damage_timer_timeout():
 	can_take_damage = true
