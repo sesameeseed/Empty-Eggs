@@ -33,10 +33,19 @@ shape = SubResource("RectangleShape2D_6kwc0")
 [node name="DamageTimer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(200, -100)
+offset = Vector2(2.08165e-12, -100)
 limit_bottom = 1000
 limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_right_margin = 0.4
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
