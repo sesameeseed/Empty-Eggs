@@ -48,8 +48,8 @@ func _physics_process(delta):
 		# Egg 3: Glide
 		elif egg_count > 2 and not can_double_jump:
 			if Input.is_action_just_pressed("ui_up"):
-				velocity.y  = 0
-				gravity *= 0.2
+				velocity.y  = 100
+				gravity = 0
 	if Input.is_action_just_released("ui_up"):
 		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 	
@@ -63,13 +63,16 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# Flip sprite (true = left, false = right)
-	if velocity.x < 0:
-		sprite.flip_h = true
-		$Camera2D.drag_horizontal_offset = -1
-			
-	elif velocity.x > 0:
-		sprite.flip_h = false
-		$Camera2D.drag_horizontal_offset = 1
+	if velocity.x != 0:
+		sprite.play("player_run")
+		if velocity.x < 0:
+			sprite.flip_h = true
+			$Camera2D.drag_horizontal_offset = -1
+		elif velocity.x > 0:
+			sprite.flip_h = false
+			$Camera2D.drag_horizontal_offset = 1
+	else:
+		sprite.stop()
 	
 	# End game if jumped off map
 	if position.y >= 1000:
