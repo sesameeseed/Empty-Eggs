@@ -4,15 +4,17 @@ const SPEED = 400.0
 const JUMP_VELOCITY = -600.0
 const MAX_HEALTH = 100
 const DAMAGE_INTERVAL = 2
+const FEATHER = preload("res://feather.tscn")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health
 var timer
 var can_take_damage = true
 var sprite
-var egg_count = 2
+var egg_count = 5
 var can_dash = true
-
+var can_double_jump = true
+# in order of egg count: dash attack, double jump, glide, wring feather
 
 func _ready():
 	health = MAX_HEALTH
@@ -24,21 +26,34 @@ func _physics_process(delta):
 	# Add gravity
 	velocity.y += gravity * delta
 
-	# dash attack
+	# Egg 1: Dash attack
 	if Input.is_action_just_pressed("dash_attack") and egg_count > 0:
 		dash_attack()
-			
-	# Handle movement
+		
+	# Egg 4: Wring feather
+	if Input.is_action_just_pressed("wring_feather") and egg_count > 3 and health > 1:
+		wring_feather()
+	
+	# Handle vertical movement
 	if is_on_floor():
+		can_double_jump = true
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = JUMP_VELOCITY
+			
+	# Egg 2: Double jump
 	elif egg_count > 1:
-		if Input.is_action_just_pressed("ui_up"):
-			velocity.y  = 0
-			gravity *= 0.1
+		if Input.is_action_just_pressed("ui_up") and can_double_jump:
+			velocity.y = JUMP_VELOCITY
+			can_double_jump = false
+		# Egg 3: Glide
+		elif egg_count > 2 and not can_double_jump:
+			if Input.is_action_just_pressed("ui_up"):
+				velocity.y  = 100
+				gravity = 0
 	if Input.is_action_just_released("ui_up"):
 		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-			
+	
+	# Handle horizontal movement
 	if can_dash:
 		if Input.is_action_pressed("ui_left"):
 			velocity.x = -SPEED
@@ -48,17 +63,20 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# Flip sprite (true = left, false = right)
-	if velocity.x < 0:
-		sprite.flip_h = true
-		$Camera2D.drag_horizontal_offset = -1
-			
-	elif velocity.x > 0:
-		sprite.flip_h = false
-		$Camera2D.drag_horizontal_offset = 1
+	if velocity.x != 0:
+		sprite.play("player_run")
+		if velocity.x < 0:
+			sprite.flip_h = true
+			$Camera2D.drag_horizontal_offset = -1
+		elif velocity.x > 0:
+			sprite.flip_h = false
+			$Camera2D.drag_horizontal_offset = 1
+	else:
+		sprite.stop()
 	
 	# End game if jumped off map
 	if position.y >= 1000:
-		queue_free()
+		get_tree().reload_current_scene()
 		
 # Take damage when passing through enemy
 func take_damage(damage_en):
@@ -70,12 +88,18 @@ func take_damage(damage_en):
 			get_tree().reload_current_scene()
 		print('Player lost ' + str(damage_en) + ' health')
 
-# dash attack
+# Dash attack function
 func dash_attack():
 	if can_dash:
 		can_dash = false
 		$DashTimer.start()
 		velocity.x = 12 * SPEED * (0.5 - int(sprite.flip_h))
+
+func wring_feather():
+	health -= 1
+	var feather = FEATHER.instantiate()
+	feather.position = position
+	get_parent().add_child(feather)
 
 func _on_damage_timer_timeout():
 	can_take_damage = true
