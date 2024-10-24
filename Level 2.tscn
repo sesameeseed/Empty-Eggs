@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://djkbiwvfdsdq"]
+[gd_scene load_steps=3 format=3 uid="uid://djkbiwvfdsdq"]
+
+[ext_resource type="PackedScene" uid="uid://7mdf7icuyjha" path="res://Lvl2Platform.tscn" id="1_otwdk"]
+[ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="2_qhohf"]
 
 [node name="Level 2" type="Node2D"]
+
+[node name="Lvl2Platform" parent="." instance=ExtResource("1_otwdk")]
+position = Vector2(-686, -563)
+scale = Vector2(10.1619, 10.1619)
+
+[node name="Player" parent="." instance=ExtResource("2_qhohf")]
+scale = Vector2(1.35583, 1.64302)

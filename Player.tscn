@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bi10ewdtb0mah"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_bw7c5"]
-[ext_resource type="Texture2D" uid="uid://cr3tltecptba7" path="res://bird walk cycle.png" id="2_fjohp"]
+[ext_resource type="Texture2D" uid="uid://3kdnvagx14jo" path="res://bird walk cycle.png" id="2_fjohp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1xek"]
 atlas = ExtResource("2_fjohp")
@@ -84,7 +84,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kwc0"]
 size = Vector2(194.735, 237.645)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.79525, 0.963699)
 script = ExtResource("1_bw7c5")
 
