@@ -14,7 +14,9 @@ scale = Vector2(3.46269, 3.46269)
 texture = ExtResource("7_4vkni")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_3k7cq")]
-position = Vector2(125, 415)
-scale = Vector2(0.290549, 0.352093)
+position = Vector2(434, 426)
+scale = Vector2(0.810544, 0.982234)
 
 [node name="Lvl1Platform" parent="." instance=ExtResource("3_fjcss")]
+position = Vector2(-20, -1347)
+scale = Vector2(3.9029, 3.9029)
