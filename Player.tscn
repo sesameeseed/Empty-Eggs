@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bi10ewdtb0mah"]
+[gd_scene load_steps=16 format=3 uid="uid://bi10ewdtb0mah"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_bw7c5"]
-[ext_resource type="Texture2D" uid="uid://cr3tltecptba7" path="res://bird walk cycle.png" id="2_fjohp"]
+[ext_resource type="Texture2D" uid="uid://3kdnvagx14jo" path="res://bird walk cycle.png" id="2_fjohp"]
+[ext_resource type="Script" path="res://camera.gd" id="3_84j50"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1xek"]
 atlas = ExtResource("2_fjohp")
@@ -111,6 +112,7 @@ shape = SubResource("RectangleShape2D_6kwc0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(2.08165e-12, -100)
+zoom = Vector2(0.5, 0.5)
 limit_bottom = 1000
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -119,10 +121,12 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.4
 drag_right_margin = 0.4
+script = ExtResource("3_84j50")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[connection signal="grounded_updated" from="." to="Camera2D" method="_on_player_grounded_updated"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
