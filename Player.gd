@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal grounded_updated(is_grounded)
+
 const SPEED = 400.0
 const JUMP_VELOCITY = -600.0
 const MAX_HEALTH = 100
@@ -14,6 +16,7 @@ var sprite
 var egg_count = 5
 var can_dash = true
 var can_double_jump = true
+var is_grounded
 # in order of egg count: dash attack, double jump, glide, wring feather
 
 func _ready():
@@ -73,6 +76,13 @@ func _physics_process(delta):
 			$Camera2D.drag_horizontal_offset = 1
 	else:
 		sprite.stop()
+	
+	# Check if grounded (for camera)
+	var was_grounded = is_grounded
+	is_grounded = is_on_floor()
+	
+	if was_grounded ==  null || is_grounded != was_grounded:
+		emit_signal("grounded_updated",is_grounded) #Signals if player is grounded
 	
 	# End game if jumped off map
 	if position.y >= 1000:
