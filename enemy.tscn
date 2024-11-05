@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvi8ccya1xito"]
+[gd_scene load_steps=5 format=3 uid="uid://dvi8ccya1xito"]
 
 [ext_resource type="Texture2D" uid="uid://djpkcgi5e381j" path="res://Placeholder.png" id="1_hkins"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_ub8dy"]
@@ -6,10 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4nkb"]
 size = Vector2(300, 250)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxyao"]
+radius = 51.434
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.274589, 0.276024)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 16
 script = ExtResource("1_ub8dy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,8 +22,23 @@ texture = ExtResource("1_hkins")
 shape = SubResource("RectangleShape2D_h4nkb")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_h4nkb")
 
+[node name="DetectPlayer" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayer"]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_rxyao")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.9
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="DetectPlayer" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="DetectPlayer" to="." method="_on_detect_player_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
