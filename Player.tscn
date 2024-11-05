@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bi10ewdtb0mah"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_bw7c5"]
-[ext_resource type="Texture2D" uid="uid://3kdnvagx14jo" path="res://bird walk cycle.png" id="2_fjohp"]
+[ext_resource type="Texture2D" uid="uid://cr3tltecptba7" path="res://bird walk cycle.png" id="2_fjohp"]
 [ext_resource type="Script" path="res://camera.gd" id="3_84j50"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1xek"]
@@ -79,7 +79,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"player_run",
-"speed": 5.0
+"speed": 11.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kwc0"]
