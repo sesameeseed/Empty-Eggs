@@ -586,7 +586,8 @@ texture = ExtResource("1_n5knn")
 10:15/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_vqfwp"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_7nvh0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5oxgk"]
@@ -1162,7 +1163,8 @@ texture = ExtResource("1_n5knn")
 10:15/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_xnvib"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_5oxgk")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2l2dt"]
@@ -1719,7 +1721,8 @@ texture = ExtResource("1_n5knn")
 10:15/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_0dqo2"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_2l2dt")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieteb"]
@@ -1783,6 +1786,8 @@ layer_0/tile_data = PackedInt32Array(393232, 655360, 2, 393233, 655360, 2, 65537
 
 [node name="MovingPlatform1" type="AnimatableBody2D" parent="."]
 position = Vector2(2.08165e-12, 69.5881)
+collision_layer = 16
+collision_mask = 16
 
 [node name="TileMap" type="TileMap" parent="MovingPlatform1"]
 tile_set = SubResource("TileSet_0dqo2")
@@ -1800,6 +1805,8 @@ libraries = {
 
 [node name="MovingPlatform2" type="AnimatableBody2D" parent="."]
 position = Vector2(113, 19.8994)
+collision_layer = 16
+collision_mask = 16
 metadata/_edit_group_ = true
 
 [node name="TileMap" type="TileMap" parent="MovingPlatform2"]
