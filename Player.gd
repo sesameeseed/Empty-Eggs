@@ -13,10 +13,11 @@ var health
 var timer
 var can_take_damage = true
 var sprite
-var egg_count = 5
+var egg_count
 var can_dash = true
 var can_double_jump = true
 var is_grounded
+var level_egg_available = true
 # in order of egg count: dash attack, double jump, glide, wring feather
 
 func _ready():
@@ -24,6 +25,7 @@ func _ready():
 	timer = $DamageTimer
 	timer.wait_time = DAMAGE_INTERVAL
 	sprite = $Sprite
+	egg_count = get_tree().get_root().get_child(0).egg_count
 
 func _physics_process(delta):
 	# Add gravity
@@ -89,6 +91,7 @@ func _physics_process(delta):
 	# End game if jumped off map
 	if position.y >= 1000:
 		get_tree().reload_current_scene()
+	
 		
 # Take damage when passing through enemy
 func take_damage(damage_en):
@@ -118,9 +121,3 @@ func _on_damage_timer_timeout():
 
 func _on_dash_timer_timeout():
 	can_dash = true
-	
-# End game when player hits spikes
-func _on_hitbox_body_entered(body):
-	if body == $"../egg":
-		egg_count += 1
-		get_node("res://game.tscn").change_level()

@@ -83,11 +83,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kwc0"]
-size = Vector2(194.735, 237.645)
+size = Vector2(252.709, 287.026)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.79525, 0.963699)
-collision_mask = 17
+collision_mask = 19
 script = ExtResource("1_bw7c5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -98,13 +98,14 @@ animation = &"player_run"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
-polygon = PackedVector2Array(-17.6045, -30.0924, 31.4367, -30.0924, 38.9815, -24.904, 38.9815, -5.18834, 46.5262, -5.18834, 46.5262, 9.33902, 41.4964, 9.33902, 41.4964, 13.4897, 51.5561, 28.017, 45.2688, 38.3937, 46.5262, 40.4691, 46.5262, 48.7704, 8.80226, 48.7704, 8.80226, 39.4314, 1.25747, 39.4314, 1.25747, 48.7704, -33.9516, 48.7704, -33.9516, 44.6197, -41.4964, 44.6197, -51.5561, 29.0547, -36.4665, 5.18834, -36.4665, -14.5274, -46.5262, -14.5274, -46.5262, -21.791, -42.7538, -23.8664, -37.724, -37.3561, -25.1493, -47.7327, -22.6344, -39.4314)
+polygon = PackedVector2Array(-17.6045, -30.0924, 31.4367, -30.0924, 38.9815, -24.904, 38.9815, -5.18834, 46.5262, -5.18834, 46.5262, 9.33902, 41.4964, 13.4897, 51.5561, 28.017, 45.2688, 38.3937, 46.5262, 40.4691, 46.5262, 48.7704, 8.80226, 48.7704, 8.80226, 39.4314, 1.25747, 39.4314, 1.25747, 48.7704, -33.9516, 48.7704, -41.4964, 44.6197, -51.5561, 29.0547, -36.4665, 5.18834, -36.4665, -11.4144, -46.5262, -14.5274, -46.5262, -21.791, -42.7538, -23.8664, -37.724, -37.3561, -25.1493, -47.7327, -22.6344, -39.4314)
 one_way_collision = true
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(4.08676, 8.82018)
+position = Vector2(0.628732, 1.5565)
 scale = Vector2(0.422955, 0.336218)
 shape = SubResource("RectangleShape2D_6kwc0")
 

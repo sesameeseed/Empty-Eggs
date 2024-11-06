@@ -8,12 +8,13 @@ const LEVELS = [LEVEL1, LEVEL2, LEVEL3]
 var curr_level
 var new_level
 var level_ind
+var egg_count = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	level_ind = 0
 	curr_level = LEVEL1.instantiate()
-	add_child(LEVEL1.instantiate())
+	add_child(curr_level)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
