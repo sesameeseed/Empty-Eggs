@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://brym11rxhi0wj"]
+
+[ext_resource type="PackedScene" uid="uid://dvi8ccya1xito" path="res://enemy.tscn" id="1_0sua1"]
+[ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="2_k7t1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2w31"]
+size = Vector2(552, 251.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_0sua1")]
+position = Vector2(187, 302)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(378, 437)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(-5, 56)
+shape = SubResource("RectangleShape2D_t2w31")
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+position = Vector2(857, 430)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+position = Vector2(2, 39.25)
+shape = SubResource("RectangleShape2D_t2w31")
+
+[node name="CharacterBody2D4" type="CharacterBody2D" parent="."]
+position = Vector2(-190, 306)
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D4"]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_t2w31")
+
+[node name="Player" parent="." instance=ExtResource("2_k7t1j")]
+position = Vector2(760, 41)

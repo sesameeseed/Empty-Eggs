@@ -13,10 +13,11 @@ var health
 var timer
 var can_take_damage = true
 var sprite
-var egg_count = 5
+var egg_count
 var can_dash = true
 var can_double_jump = true
 var is_grounded
+var level_egg_available = true
 # in order of egg count: dash attack, double jump, glide, wring feather
 
 func _ready():
@@ -24,6 +25,7 @@ func _ready():
 	timer = $DamageTimer
 	timer.wait_time = DAMAGE_INTERVAL
 	sprite = $Sprite
+	egg_count = get_tree().get_root().get_child(0).egg_count
 
 func _physics_process(delta):
 	# Add gravity
@@ -38,44 +40,46 @@ func _physics_process(delta):
 		wring_feather()
 	
 	# Handle vertical movement
-	if is_on_floor():
+	if not is_on_floor():
+		sprite.frame = 1
+		# Egg 2: Double jump
+		if egg_count > 1:
+			if Input.is_action_just_pressed("ui_up") and can_double_jump:
+				velocity.y = JUMP_VELOCITY
+				can_double_jump = false
+			# Egg 3: Glide
+			elif egg_count > 2 and not can_double_jump:
+				if Input.is_action_just_pressed("ui_up"):
+					velocity.y  = 100
+					gravity = 0
+	else:
 		can_double_jump = true
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = JUMP_VELOCITY
-			
-	# Egg 2: Double jump
-	elif egg_count > 1:
-		if Input.is_action_just_pressed("ui_up") and can_double_jump:
-			velocity.y = JUMP_VELOCITY
-			can_double_jump = false
-		# Egg 3: Glide
-		elif egg_count > 2 and not can_double_jump:
-			if Input.is_action_just_pressed("ui_up"):
-				velocity.y  = 100
-				gravity = 0
+
 	if Input.is_action_just_released("ui_up"):
 		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+	if not (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")):
+		sprite.stop()
 	
 	# Handle horizontal movement
 	if can_dash:
 		if Input.is_action_pressed("ui_left"):
+			sprite.play("player_run")
 			velocity.x = -SPEED
 		elif Input.is_action_pressed("ui_right"):
+			sprite.play("player_run")
 			velocity.x = SPEED
 	velocity.x = lerpf(velocity.x, 0, 0.1)
 	move_and_slide()
 	
 	# Flip sprite (true = left, false = right)
-	if velocity.x != 0:
-		sprite.play("player_run")
-		if velocity.x < 0:
-			sprite.flip_h = true
-			$Camera2D.drag_horizontal_offset = -1
-		elif velocity.x > 0:
-			sprite.flip_h = false
-			$Camera2D.drag_horizontal_offset = 1
-	else:
-		sprite.stop()
+	if velocity.x < 0:
+		sprite.flip_h = true
+		$Camera2D.drag_horizontal_offset = -1
+	elif velocity.x > 0:
+		sprite.flip_h = false
+		$Camera2D.drag_horizontal_offset = 1
 	
 	# Check if grounded (for camera)
 	var was_grounded = is_grounded
@@ -87,6 +91,7 @@ func _physics_process(delta):
 	# End game if jumped off map
 	if position.y >= 1000:
 		get_tree().reload_current_scene()
+	
 		
 # Take damage when passing through enemy
 func take_damage(damage_en):
@@ -116,11 +121,3 @@ func _on_damage_timer_timeout():
 
 func _on_dash_timer_timeout():
 	can_dash = true
-	
-# End game when player hits spikes
-func _on_hitbox_body_entered(body):
-	if body == $"../spikes":
-		get_tree().reload_current_scene()
-	if body == $"../egg":
-		egg_count += 1
-		print("game done")
