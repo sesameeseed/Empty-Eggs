@@ -2,7 +2,8 @@ extends Node
 
 const LEVEL1 = preload("res://Level 1.tscn")
 const LEVEL2 = preload("res://Level 2.tscn")
-const LEVELS = [LEVEL1, LEVEL2]
+const LEVEL3 = preload("res://Level 3.tscn")
+const LEVELS = [LEVEL1, LEVEL2, LEVEL3]
 
 var curr_level
 var new_level
