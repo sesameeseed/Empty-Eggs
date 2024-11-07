@@ -14,4 +14,4 @@ scale = Vector2(3.07169, 3.07169)
 [node name="Player" parent="." instance=ExtResource("2_qhohf")]
 position = Vector2(-440, -252)
 scale = Vector2(0.534018, 0.647132)
-collision_mask = 17
+collision_mask = 48

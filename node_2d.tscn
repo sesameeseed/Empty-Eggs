@@ -6,7 +6,7 @@
 size = Vector2(16, 8.5)
 
 [node name="key" type="Area2D"]
-collision_layer = 0
+collision_layer = 16
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rkb3p")
