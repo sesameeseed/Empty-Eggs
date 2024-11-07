@@ -13,7 +13,7 @@ var egg_count = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	level_ind = 0
-	curr_level = LEVEL2.instantiate()
+	curr_level = LEVEL1.instantiate()
 	add_child(curr_level)
 
 
@@ -22,7 +22,7 @@ func _process(delta):
 	pass
 
 func change_level():
-	if level_ind != 1:
+	if level_ind < 2:
 		level_ind += 1
 		new_level = LEVELS[level_ind].instantiate()
 		add_child(new_level)
