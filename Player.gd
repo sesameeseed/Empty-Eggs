@@ -18,6 +18,7 @@ var can_dash = true
 var can_double_jump = true
 var is_grounded
 var level_egg_available = true
+var health_bar
 # in order of egg count: dash attack, double jump, glide, wring feather
 
 func _ready():
@@ -26,6 +27,7 @@ func _ready():
 	timer.wait_time = DAMAGE_INTERVAL
 	sprite = $Sprite
 	egg_count = get_tree().get_root().get_child(0).egg_count
+	health_bar = $CanvasLayer/Control/TextureProgressBar
 
 func _physics_process(delta):
 	# Add gravity
@@ -45,8 +47,8 @@ func _physics_process(delta):
 		# Egg 2: Double jump
 		if egg_count > 1:
 			if Input.is_action_just_pressed("ui_up") and can_double_jump:
-				velocity.y = JUMP_VELOCITY
 				can_double_jump = false
+				velocity.y = JUMP_VELOCITY
 			# Egg 3: Glide
 			elif egg_count > 2 and not can_double_jump:
 				if Input.is_action_just_pressed("ui_up"):

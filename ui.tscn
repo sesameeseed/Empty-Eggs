@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcordpn8i6xcj"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_c3bu5"]
+[ext_resource type="Texture2D" uid="uid://cbvlw618klmgq" path="res://greenbar (3).png" id="1_lbq16"]
+[ext_resource type="Texture2D" uid="uid://dnxkf0cguekxr" path="res://greenbar (2).png" id="2_lop7x"]
+[ext_resource type="Texture2D" uid="uid://eqkqpiyrm8bq" path="res://egg.png" id="3_vt6rp"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c3bu5")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = -59.0
+offset_right = 175.0
+offset_bottom = 86.0
+scale = Vector2(1.83631, 1.48623)
+max_value = 110.0
+value = 50.0
+texture_under = ExtResource("1_lbq16")
+texture_progress = ExtResource("2_lop7x")
+texture_progress_offset = Vector2(2.08165e-12, 15)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.91656, 1.93261)
+text = "HP
+"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 574.0
+offset_right = 1200.0
+offset_bottom = 1774.0
+scale = Vector2(0.065253, 0.0612689)
+texture = ExtResource("3_vt6rp")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 592.0
+offset_right = 104.0
+offset_bottom = 618.0
+scale = Vector2(1.64065, 1.74522)
+text = "x 0"
