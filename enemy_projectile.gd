@@ -13,6 +13,8 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	for i in get_slide_collision_count():
 		queue_free()
+	if velocity.x > 0:
+		$Sprite2D.flip_h
 	move_and_slide()
 
 func _on_hitbox_body_entered(body):
