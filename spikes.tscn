@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfeao0jk0tx1o"]
+
+[ext_resource type="Script" path="res://spikes.gd" id="1_sx458"]
+[ext_resource type="Texture2D" uid="uid://cglbb1lediyud" path="res://StrangeUndergroundPlatformer/Sorted/Enemies&Spikes/Spikes2.png" id="2_amudq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlkgd"]
+size = Vector2(16, 10.625)
+
+[node name="spikes" type="Area2D"]
+script = ExtResource("1_sx458")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_amudq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.3125)
+shape = SubResource("RectangleShape2D_wlkgd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
