@@ -601,7 +601,7 @@ texture = ExtResource("1_n5knn")
 10:15/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_vqfwp"]
-physics_layer_0/collision_layer = 16
+physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_7nvh0")
 
@@ -1179,7 +1179,6 @@ texture = ExtResource("1_n5knn")
 
 [sub_resource type="TileSet" id="TileSet_xnvib"]
 physics_layer_0/collision_layer = 16
-physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_5oxgk")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieteb"]
