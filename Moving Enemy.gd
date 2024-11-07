@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 400.0
+const SPEED = 300.0
 const DAMAGE = 20.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction = 1
@@ -28,7 +28,9 @@ func _physics_process(delta):
 	# gravity
 	if is_on_floor():
 		velocity.y = 0
+		$AnimatedSprite2D.play("default")
 	else:
+		$AnimatedSprite2D.stop()
 		velocity.y += gravity * delta
 	
 	# move around 
@@ -45,9 +47,9 @@ func _physics_process(delta):
 		
 	# flip sprite
 	if velocity.x < 0:
-		$Sprite2D.flip_h = true
+		$AnimatedSprite2D.flip_h = false
 	elif velocity.x > 0:
-		$Sprite2D.flip_h = false
+		$AnimatedSprite2D.flip_h = true
 
 # deal damage to player
 func _on_area_2d_body_entered(body):

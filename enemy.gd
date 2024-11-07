@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 400.0
+const SPEED = 300.0
 const DAMAGE = 20.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction = 1
@@ -37,6 +37,7 @@ func _physics_process(delta):
 	
 	#conditions to shoot
 	if player_detected and shoottimer.is_stopped():
+		$AnimatedSprite2D.play("shoot")
 		shoottimer.start()
 		
 	#detects collision
@@ -50,9 +51,9 @@ func _physics_process(delta):
 		
 	# flip sprite
 	if velocity.x < 0:
-		$Sprite2D.flip_h = true
+		$AnimatedSprite2D.flip_h = false
 	elif velocity.x > 0:
-		$Sprite2D.flip_h = false
+		$AnimatedSprite2D.flip_h = true
 
 # deal damage to player
 func _on_area_2d_body_entered(body):
@@ -89,4 +90,5 @@ func _on_shoot_timer_timeout():
 	enemy_projectile_instantiate.global_position = global_position
 	enemy_projectile_instantiate.velocity = Vector2(projectile_x_v,projectile_y_v)
 	get_parent().add_child(enemy_projectile_instantiate)
+	$AnimatedSprite2D.stop()
 	pass # Replace with function body.

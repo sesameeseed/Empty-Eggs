@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://nvt02d50055h"]
+[gd_scene load_steps=4 format=3 uid="uid://nvt02d50055h"]
 
 [ext_resource type="Script" path="res://enemy_projectile.gd" id="1_ucaw1"]
+[ext_resource type="Texture2D" uid="uid://cneg6uyw53bk0" path="res://enemy1.png" id="2_qc2tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_squlx"]
-size = Vector2(13.0273, 44.404)
+size = Vector2(4.10839, 51.8047)
 
 [node name="Node2D" type="CharacterBody2D"]
 scale = Vector2(0.289165, 0.270246)
@@ -12,7 +13,7 @@ collision_mask = 16
 script = ExtResource("1_ucaw1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4.96253e-07)
+position = Vector2(-3.45823, 3.70033)
 scale = Vector2(10.101, 1)
 shape = SubResource("RectangleShape2D_squlx")
 
@@ -20,7 +21,7 @@ shape = SubResource("RectangleShape2D_squlx")
 collision_layer = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 5.51392e-07)
+position = Vector2(-3.45823, 3.70033)
 scale = Vector2(10.101, 1)
 shape = SubResource("RectangleShape2D_squlx")
 
@@ -28,6 +29,10 @@ shape = SubResource("RectangleShape2D_squlx")
 wait_time = 1.731
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(93.3723, 0)
+texture = ExtResource("2_qc2tm")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Despawn" to="." method="_on_despawn_timeout"]
