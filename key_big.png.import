@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream
-uid="uid://di4ih0b0p43a0"
-=======
-uid="uid://b63c0s2s1qxcw"
->>>>>>> Stashed changes
-path="res://.godot/imported/bird punch.png-20aa4b36102b08828101206d12508dbc.ctex"
+uid="uid://cyihghmuf8y04"
+path="res://.godot/imported/key_big.png-ba2c90035d5a01d7bac12e31e03aaba0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bird punch.png"
-dest_files=["res://.godot/imported/bird punch.png-20aa4b36102b08828101206d12508dbc.ctex"]
+source_file="res://key_big.png"
+dest_files=["res://.godot/imported/key_big.png-ba2c90035d5a01d7bac12e31e03aaba0.ctex"]
 
 [params]
 

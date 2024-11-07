@@ -1,6 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://bi10ewdtb0mah"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_bw7c5"]
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://di4ih0b0p43a0" path="res://bird punch.png" id="2_5stmf"]
 [ext_resource type="Texture2D" uid="uid://cr3tltecptba7" path="res://bird walk cycle.png" id="2_fjohp"]
@@ -39,6 +40,42 @@ region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apv4c"]
 atlas = ExtResource("2_5stmf")
+=======
+[ext_resource type="Texture2D" uid="uid://cr3tltecptba7" path="res://bird walk cycle.png" id="2_fjohp"]
+[ext_resource type="Texture2D" uid="uid://b63c0s2s1qxcw" path="res://bird punch.png" id="2_k4h7c"]
+[ext_resource type="Script" path="res://camera.gd" id="3_84j50"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md1q1"]
+atlas = ExtResource("2_k4h7c")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3isbu"]
+atlas = ExtResource("2_k4h7c")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhpt5"]
+atlas = ExtResource("2_k4h7c")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu5w2"]
+atlas = ExtResource("2_k4h7c")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vde1"]
+atlas = ExtResource("2_k4h7c")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m86p1"]
+atlas = ExtResource("2_k4h7c")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_015mg"]
+atlas = ExtResource("2_k4h7c")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryg5n"]
+atlas = ExtResource("2_k4h7c")
+>>>>>>> Stashed changes
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1xek"]
@@ -85,6 +122,7 @@ region = Rect2(576, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+<<<<<<< Updated upstream
 "texture": SubResource("AtlasTexture_wbys4")
 }, {
 "duration": 1.0,
@@ -107,6 +145,30 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_apv4c")
+=======
+"texture": SubResource("AtlasTexture_md1q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3isbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhpt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu5w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vde1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m86p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_015mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryg5n")
+>>>>>>> Stashed changes
 }],
 "loop": true,
 "name": &"dash_attack",
@@ -145,11 +207,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"player_run",
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 "speed": 10.0
 =======
 "speed": 5.0
 >>>>>>> b54dc7574e8352aeae7f19b7c07d2a41d5094cb9
+=======
+"speed": 10.0
+>>>>>>> Stashed changes
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kwc0"]
@@ -157,6 +223,7 @@ size = Vector2(194.735, 237.645)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.79525, 0.963699)
+collision_mask = 17
 script = ExtResource("1_bw7c5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -171,6 +238,7 @@ polygon = PackedVector2Array(-17.6045, -30.0924, 31.4367, -30.0924, 38.9815, -24
 one_way_collision = true
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(4.08676, 8.82018)

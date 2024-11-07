@@ -8,12 +8,12 @@ const LEVELS = [LEVEL1, LEVEL2, LEVEL3]
 var curr_level
 var new_level
 var level_ind
-var egg_count = 0
+var egg_count = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	level_ind = 0
-	curr_level = LEVEL1.instantiate()
+	curr_level = LEVEL3.instantiate()
 	add_child(curr_level)
 
 

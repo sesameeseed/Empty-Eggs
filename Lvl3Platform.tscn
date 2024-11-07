@@ -372,7 +372,7 @@ texture = ExtResource("1_2a4pv")
 18:13/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_cfmdf"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 16
 sources/0 = SubResource("TileSetAtlasSource_wbhxt")
 
 [node name="Level3Platform" type="Node2D"]

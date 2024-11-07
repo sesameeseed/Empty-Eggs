@@ -90,3 +90,6 @@ func _on_shoot_timer_timeout():
 	enemy_projectile_instantiate.velocity = Vector2(projectile_x_v,projectile_y_v)
 	get_parent().add_child(enemy_projectile_instantiate)
 	pass # Replace with function body.
+
+func attacked():
+	queue_free()

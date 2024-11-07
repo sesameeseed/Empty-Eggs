@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://djkbiwvfdsdq"]
+[gd_scene load_steps=6 format=3 uid="uid://djkbiwvfdsdq"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_7blwj"]
 [ext_resource type="PackedScene" uid="uid://7mdf7icuyjha" path="res://Lvl2Platform.tscn" id="1_otwdk"]
 [ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="2_qhohf"]
+[ext_resource type="PackedScene" uid="uid://mqn08i8qapon" path="res://egg.tscn" id="4_5l87k"]
+[ext_resource type="PackedScene" uid="uid://dvi8ccya1xito" path="res://enemy.tscn" id="5_prev2"]
 
 [node name="Level 2" type="Node2D"]
 script = ExtResource("1_7blwj")
@@ -14,3 +16,16 @@ scale = Vector2(3.07169, 3.07169)
 [node name="Player" parent="." instance=ExtResource("2_qhohf")]
 position = Vector2(-440, -252)
 scale = Vector2(0.534018, 0.647132)
+
+[node name="egg" parent="." instance=ExtResource("4_5l87k")]
+position = Vector2(1596, 13)
+scale = Vector2(0.244392, 0.231945)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("5_prev2")]
+position = Vector2(-946, 743)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("5_prev2")]
+position = Vector2(-949, 301)
+
+[node name="CharacterBody2D3" parent="." instance=ExtResource("5_prev2")]
+position = Vector2(1083, 8)

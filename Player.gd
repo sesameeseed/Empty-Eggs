@@ -32,8 +32,12 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 
 	# Egg 1: Dash attack
+<<<<<<< Updated upstream
 	if Input.is_action_just_pressed("dash_attack") and egg_count > 0:
 		sprite.play("dash_attack")
+=======
+	if Input.is_action_just_pressed("dash_attack") and egg_count > 0 and can_dash:
+>>>>>>> Stashed changes
 		dash_attack()
 		
 	# Egg 4: Wring feather
@@ -51,7 +55,7 @@ func _physics_process(delta):
 			# Egg 3: Glide
 			elif egg_count > 2 and not can_double_jump:
 				if Input.is_action_just_pressed("ui_up"):
-					velocity.y  = 100
+					velocity.y = 100
 					gravity = 0
 	else:
 		can_double_jump = true
@@ -106,11 +110,19 @@ func take_damage(damage_en):
 
 # Dash attack function
 func dash_attack():
+<<<<<<< Updated upstream
 	if can_dash:
 		can_dash = false
 		can_take_damage = false
 		$DashTimer.start()
 		velocity.x = 12 * SPEED * (0.5 - int(sprite.flip_h))
+=======
+	can_take_damage = false
+	sprite.play("dash_attack")
+	can_dash = false
+	$DashTimer.start()
+	velocity.x = 12 * SPEED * (0.5 - int(sprite.flip_h))
+>>>>>>> Stashed changes
 
 func wring_feather():
 	health -= 1
@@ -125,3 +137,11 @@ func _on_dash_timer_timeout():
 	can_dash = true
 	can_take_damage = true
 	sprite.stop()
+<<<<<<< Updated upstream
+=======
+
+
+func _on_hitbox_body_entered(body):
+	if body.get_collision_layer() == 2 and not can_dash:
+		body.queue_free()
+>>>>>>> Stashed changes
