@@ -1,10 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://bi10ewdtb0mah"]
+[gd_scene load_steps=29 format=3 uid="uid://bi10ewdtb0mah"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_bw7c5"]
 [ext_resource type="Texture2D" uid="uid://hh5cv5le2o33" path="res://bird punch.png" id="2_8qak2"]
 [ext_resource type="Texture2D" uid="uid://cr3tltecptba7" path="res://bird walk cycle.png" id="2_fjohp"]
 [ext_resource type="Script" path="res://camera.gd" id="3_84j50"]
 [ext_resource type="PackedScene" uid="uid://dcordpn8i6xcj" path="res://ui.tscn" id="5_e14fb"]
+[ext_resource type="AudioStream" uid="uid://fwfum1xc5heq" path="res://Jump 1.wav" id="6_2dpxn"]
+[ext_resource type="AudioStream" uid="uid://cdjnsr0l8bmjv" path="res://Hit damage 1.wav" id="7_eoquq"]
+[ext_resource type="AudioStream" uid="uid://rktdhhcriie5" path="res://Boss hit 1.wav" id="8_nrama"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7ap2"]
 atlas = ExtResource("2_8qak2")
@@ -192,6 +195,15 @@ wait_time = 0.8
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("5_e14fb")]
+
+[node name="jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_2dpxn")
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_eoquq")
+
+[node name="punch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nrama")
 
 [connection signal="grounded_updated" from="." to="Camera2D" method="_on_player_grounded_updated"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

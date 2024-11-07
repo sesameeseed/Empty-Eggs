@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://mqn08i8qapon"]
+[gd_scene load_steps=7 format=3 uid="uid://mqn08i8qapon"]
 
 [ext_resource type="Texture2D" uid="uid://eqkqpiyrm8bq" path="res://egg.png" id="1_qxoi2"]
 [ext_resource type="Script" path="res://egg.gd" id="1_yvw4u"]
+[ext_resource type="AudioStream" uid="uid://cp8djm4wnc8sm" path="res://*Fanfare_1.wav" id="3_kkqll"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_en2r2"]
 radius = 9.72459
 height = 30.7325
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_niomk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebk01"]
+font_size = 60
+font_color = Color(0.854902, 0.45098, 0, 1)
 
 [node name="egg" type="CharacterBody2D"]
 collision_layer = 0
@@ -29,5 +34,19 @@ shape = SubResource("CapsuleShape2D_en2r2")
 position = Vector2(2.08165e-12, 9)
 scale = Vector2(9.872, 8.395)
 shape = SubResource("CapsuleShape2D_niomk")
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kkqll")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -546.0
+offset_top = -389.0
+offset_right = 438.0
+offset_bottom = -303.0
+scale = Vector2(1.10897, 1.8191)
+text = "Press down to go to the next level"
+label_settings = SubResource("LabelSettings_ebk01")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

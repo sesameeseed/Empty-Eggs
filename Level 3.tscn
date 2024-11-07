@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvqmsl3rgg65w"]
+[gd_scene load_steps=6 format=3 uid="uid://cvqmsl3rgg65w"]
 
 [ext_resource type="Texture2D" uid="uid://2c8wflyr4ik1" path="res://Mountains.jpg" id="1_ibnm5"]
 [ext_resource type="PackedScene" uid="uid://dndstnn6xqa36" path="res://Lvl3Platform.tscn" id="2_fiay3"]
 [ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="3_628jk"]
 [ext_resource type="PackedScene" uid="uid://mqn08i8qapon" path="res://egg.tscn" id="4_tjry1"]
+[ext_resource type="AudioStream" uid="uid://b71popahw3ccj" path="res://*sea_theme_2.wav" id="5_4s01l"]
 
 [node name="Level 3" type="Node2D"]
 
@@ -24,3 +25,7 @@ collision_mask = 17
 [node name="egg" parent="." instance=ExtResource("4_tjry1")]
 position = Vector2(402, -223)
 scale = Vector2(0.27637, 0.240221)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4s01l")
+autoplay = true

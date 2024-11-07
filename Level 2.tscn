@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djkbiwvfdsdq"]
+[gd_scene load_steps=8 format=3 uid="uid://djkbiwvfdsdq"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_7blwj"]
 [ext_resource type="PackedScene" uid="uid://7mdf7icuyjha" path="res://Lvl2Platform.tscn" id="1_otwdk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvi8ccya1xito" path="res://enemy.tscn" id="4_xnwsv"]
 [ext_resource type="PackedScene" uid="uid://mqn08i8qapon" path="res://egg.tscn" id="5_58w3j"]
 [ext_resource type="PackedScene" uid="uid://ck4gh8xgcvrkh" path="res://moving_enemy.tscn" id="6_1pm4v"]
+[ext_resource type="AudioStream" uid="uid://d3tl6mc0j8odq" path="res://*Track_#4.wav" id="7_6gdv4"]
 
 [node name="Level 2" type="Node2D"]
 script = ExtResource("1_7blwj")
@@ -37,3 +38,7 @@ scale = Vector2(0.262499, 0.244548)
 
 [node name="Moving Enemy" parent="." instance=ExtResource("6_1pm4v")]
 position = Vector2(1002, 209)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6gdv4")
+autoplay = true

@@ -47,6 +47,7 @@ func _physics_process(delta):
 		# Egg 2: Double jump
 		if egg_count > 1:
 			if Input.is_action_just_pressed("ui_up") and can_double_jump:
+				$jump.play()
 				can_double_jump = false
 				velocity.y = JUMP_VELOCITY
 			# Egg 3: Glide
@@ -57,6 +58,7 @@ func _physics_process(delta):
 	else:
 		can_double_jump = true
 		if Input.is_action_just_pressed("ui_up"):
+			$jump.play()
 			velocity.y = JUMP_VELOCITY
 
 	if Input.is_action_just_released("ui_up"):
@@ -97,6 +99,7 @@ func _physics_process(delta):
 		
 # Take damage when passing through enemy
 func take_damage(damage_en):
+	$hit.play()
 	if can_take_damage:
 		can_take_damage = false
 		$DamageTimer.start()
@@ -107,6 +110,7 @@ func take_damage(damage_en):
 
 # Dash attack function
 func dash_attack():
+	$punch.play()
 	can_dash = false
 	can_take_damage = false
 	sprite.play("dash_attack")

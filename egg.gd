@@ -13,3 +13,6 @@ func _on_area_2d_body_entered(body):
 			get_tree().get_root().get_child(0).egg_count += 1
 			move_on = true
 			body.level_egg_available = false
+			get_parent().get_child($"../AudioStreamPlayer".get_index()).stop()
+			$win.play()
+			$Label.visible = true

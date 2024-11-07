@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7mdf7icuyjha"]
+[gd_scene load_steps=13 format=3 uid="uid://7mdf7icuyjha"]
 
 [ext_resource type="Texture2D" uid="uid://btdoms8uhlso1" path="res://StrangeUndergroundPlatformer/Everything.png" id="1_n5knn"]
 [ext_resource type="PackedScene" uid="uid://faxei0x0f1hh" path="res://node_2d.tscn" id="2_88xe4"]
@@ -1233,6 +1233,9 @@ _data = {
 "move_loop": SubResource("Animation_k3u4a")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_kbjqe"]
+font_size = 30
+
 [node name="Lvl2Platform" type="Node2D"]
 script = SubResource("GDScript_w71a5")
 
@@ -1296,3 +1299,12 @@ scale = Vector2(1, 1.52)
 [node name="door2" parent="." instance=ExtResource("3_xww18")]
 position = Vector2(248, 136)
 scale = Vector2(1, 1.52)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 170.0
+offset_top = 43.0
+offset_right = 498.0
+offset_bottom = 88.0
+scale = Vector2(0.236118, 0.26895)
+text = "Press 'z' to dash attack"
+label_settings = SubResource("LabelSettings_kbjqe")

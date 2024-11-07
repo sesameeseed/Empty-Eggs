@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvi8ccya1xito"]
+[gd_scene load_steps=14 format=3 uid="uid://dvi8ccya1xito"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_ub8dy"]
 [ext_resource type="Texture2D" uid="uid://b3agmwr1cidol" path="res://enemy2 shoot.png" id="2_txfyu"]
+[ext_resource type="AudioStream" uid="uid://rktdhhcriie5" path="res://Boss hit 1.wav" id="3_20pue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4nkb"]
 size = Vector2(233.076, 327.881)
@@ -109,6 +110,9 @@ sprite_frames = SubResource("SpriteFrames_1q1gd")
 animation = &"shoot"
 frame = 1
 frame_progress = 0.512571
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_20pue")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="DetectPlayer" to="." method="_on_detect_player_body_entered"]
