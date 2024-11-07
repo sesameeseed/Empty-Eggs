@@ -7,8 +7,9 @@ func _physics_process(delta):
 		get_tree().get_root().get_child(0).change_level()
 
 func _on_area_2d_body_entered(body):
-	if body.level_egg_available:
-		body.egg_count += 1
-		get_tree().get_root().get_child(0).egg_count += 1
-		move_on = true
-		body.level_egg_available = false
+	if body == $"../Player":
+		if body.level_egg_available:
+			body.egg_count += 1
+			get_tree().get_root().get_child(0).egg_count += 1
+			move_on = true
+			body.level_egg_available = false

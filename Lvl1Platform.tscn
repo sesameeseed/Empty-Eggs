@@ -328,7 +328,7 @@ texture = ExtResource("1_3tlld")
 0:10/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_ycwkk"]
-physics_layer_0/collision_layer = 16
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_12cep")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ge6cg"]
@@ -400,7 +400,7 @@ position = Vector2(600, 514.75)
 shape = SubResource("RectangleShape2D_ge6cg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform"]
+autoplay = "move_loop"
 libraries = {
 "": SubResource("AnimationLibrary_74dko")
 }
-autoplay = "move_loop"
