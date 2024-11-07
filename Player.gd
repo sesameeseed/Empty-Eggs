@@ -32,7 +32,7 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 
 	# Egg 1: Dash attack
-	if Input.is_action_just_pressed("dash_attack") and egg_count > 0:
+	if Input.is_action_just_pressed("dash_attack") and egg_count > 0 and can_dash:
 		dash_attack()
 		
 	# Egg 4: Wring feather
@@ -59,7 +59,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("ui_up"):
 		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-	if not (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")):
+	if (not (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"))) and can_dash:
 		sprite.stop()
 	
 	# Handle horizontal movement
@@ -105,10 +105,11 @@ func take_damage(damage_en):
 
 # Dash attack function
 func dash_attack():
-	if can_dash:
-		can_dash = false
-		$DashTimer.start()
-		velocity.x = 12 * SPEED * (0.5 - int(sprite.flip_h))
+	can_dash = false
+	can_take_damage = false
+	sprite.play("dash_attack")
+	$DashTimer.start()
+	velocity.x = 12 * SPEED * (0.5 - int(sprite.flip_h))
 
 func wring_feather():
 	health -= 1
@@ -121,3 +122,9 @@ func _on_damage_timer_timeout():
 
 func _on_dash_timer_timeout():
 	can_dash = true
+	can_take_damage = true
+	sprite.stop()
+
+func _on_hitbox_body_entered(body):
+	if body.get_collision_layer() == 2:
+		body.queue_free()
