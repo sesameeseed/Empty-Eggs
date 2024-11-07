@@ -126,5 +126,5 @@ func _on_dash_timer_timeout():
 	sprite.stop()
 
 func _on_hitbox_body_entered(body):
-	if body.get_collision_layer() == 2:
+	if body.get_collision_layer() == 2 and not can_dash:
 		body.queue_free()

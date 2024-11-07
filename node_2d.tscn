@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://faxei0x0f1hh"]
+[gd_scene load_steps=4 format=3 uid="uid://faxei0x0f1hh"]
 
+[ext_resource type="Script" path="res://node_2d.gd" id="1_4j0iy"]
 [ext_resource type="Texture2D" uid="uid://dl27y0rhqmrus" path="res://StrangeUndergroundPlatformer/Sorted/Keys/GoldKey.png" id="1_rkb3p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sxjm"]
@@ -7,6 +8,7 @@ size = Vector2(16, 8.5)
 
 [node name="key" type="Area2D"]
 collision_layer = 16
+script = ExtResource("1_4j0iy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rkb3p")
@@ -14,3 +16,5 @@ texture = ExtResource("1_rkb3p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.75)
 shape = SubResource("RectangleShape2D_4sxjm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
