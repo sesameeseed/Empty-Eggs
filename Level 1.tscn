@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://chb4ryr80l4lp" path="res://Lvl1Platform.tscn" id="3_fjcss"]
 [ext_resource type="PackedScene" uid="uid://bi10ewdtb0mah" path="res://Player.tscn" id="4_3k7cq"]
 [ext_resource type="PackedScene" uid="uid://dvi8ccya1xito" path="res://enemy.tscn" id="5_yiheq"]
-[ext_resource type="PackedScene" uid="uid://mqn08i8qapon" path="res://egg.tscn" id="6_jthvj"]
+[ext_resource type="PackedScene" path="res://egg.tscn" id="6_jthvj"]
 [ext_resource type="Texture2D" uid="uid://btyflcoigvmbd" path="res://ForestBG.jpg" id="7_4vkni"]
 
 [node name="Level 1" type="Node2D"]
